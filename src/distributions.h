@@ -11,6 +11,17 @@ using namespace Rcpp;
 double dexp_(double x, double lambda);
 
 /**
+ * Exponential cumulative distribution
+ * 
+ * @param x Value to evaluate.
+ * @param lambda Rate paramter of the distribution.
+ * 
+ * @return Density value
+ */
+double exp_cdf(double x, double lambda);
+
+
+/**
  * Rayleigh density
  * 
  * @param x Value to evaluate.
@@ -19,6 +30,17 @@ double dexp_(double x, double lambda);
  * @return Density value
  */
 double drayleigh_(double x, double lambda);
+
+/**
+ * Rayleigh cumulative distribution
+ * 
+ * @param x Value to evaluate.
+ * @param lambda shape paramter of the distribution.
+ * 
+ * @return Density value
+ */
+double rayleigh_cdf(double x, double lambda);
+
 
 /**
  * Log-normal density
@@ -30,6 +52,17 @@ double drayleigh_(double x, double lambda);
  * @return Density value
  */
 double dlognormal_(double x, double mu, double sigma);
+
+/**
+ * Log-normal cumulative distribution
+ * 
+ * @param x Value to evaluate.
+ * @param mu mean
+ * @param sigma variance
+ * 
+ * @return Density value
+ */
+double lognormal_cdf(double x, double mu, double sigma);
 
 /**
  * Cumulative distribution function of the standard normal distribution

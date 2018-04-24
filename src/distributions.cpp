@@ -1,4 +1,3 @@
-// We can now use the BH package
 // [[Rcpp::depends(BH)]]
 
 #include <Rcpp.h>
