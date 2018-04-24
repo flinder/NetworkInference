@@ -18,7 +18,8 @@ Imports:
     stats
 LinkingTo: 
     Rcpp,
-    RcppProgress
+    RcppProgress,
+    BH
 BugReports: https://github.com/desmarais-lab/NetworkInference/issues
 Suggests:
     testthat,

@@ -1,13 +1,25 @@
+// We can now use the BH package
+// [[Rcpp::depends(BH)]]
+
 #include <Rcpp.h>
 #include <math.h>
 using namespace Rcpp;
+#include <boost/math/distributions/lognormal.hpp>
 
 double dexp_(double x, double lambda) {
     return lambda * std::exp(-1 * lambda * x);
 }
 
+double exp_cdf(double x, double lambda) {
+    return 1 - std::exp(-lambda * x);
+}
+
 double drayleigh_(double x, double lambda) {
     return (x / pow(lambda, 2)) * std::exp(-pow(x, 2) / (2 * pow(lambda, 2)));
+}
+
+double rayleigh_cdf(double x, double lambda) {
+    return 1 - std::exp(-pow(x, 2) / (2 * pow(lambda, 2)));
 }
 
 double dlognormal_(double x, double mu, double sigma) {
@@ -17,6 +29,11 @@ double dlognormal_(double x, double mu, double sigma) {
     }
     return 1 / (x*sigma*sqrt(2*M_PI)) * 
         std::exp(-(pow((log(x) - mu), 2)/(2*pow(sigma, 2))));
+}
+
+double lognormal_cdf(double x, double mu, double sigma) {
+    return boost::math::cdf(
+        boost::math::lognormal_distribution<double>(mu, sigma), x);
 }
 
 // https://www.johndcook.com/blog/cpp_phi/
